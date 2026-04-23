@@ -30,7 +30,7 @@ Vamos a crear:
 
 ---
 
-## 🧪 Laboratorio
+## 🧪 Laboratorio 01 --> WebApp Container
 
 Laboratorio oficial:  
 https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-app-service/01-app-service-deploy-container.html
@@ -42,3 +42,7 @@ https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-a
 - El nombre de la Web App debe ser único
 - Usar la misma región para todos los recursos
 - Asegurarse de estar logueado: az login
+
+## 🧪 Laboratorio 02 --> WebApp Code
+
+https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-app-service/02-app-service-deployment-slots.html
