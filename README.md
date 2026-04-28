@@ -36,9 +36,48 @@ Este curso está orientado a desarrolladores que quieren aprender a construir so
 - `/setup` → Configuración inicial
 
 ## ⚙️ Requisitos
-- Cuenta de Azure
-- Visual Studio / VS Code
-- .NET 8 SDK
+- Cuenta de Azure --> Xtreme Labs
+# ⚙️ Requisitos de entorno
+
+Antes de comenzar con los laboratorios, es necesario contar con el siguiente entorno configurado:
+
+---
+
+## ☁️ Azure
+
+- Una suscripción activa de Azure  
+👉 Si no tienes una, puedes crear una desde el portal de Azure
+
+---
+
+## 💻 Herramientas de desarrollo
+
+- Visual Studio Code --> https://code.visualstudio.com/download 
+- .NET 8 SDK 
+    
+    Instalar
+    ```powershell
+    winget install Microsoft.DotNet.SDK.8
+    ```
+
+    Checkear versiones instaladas
+    ```powershell
+    dotnet --list-sdks
+    ```
+- ⚡ Azure Functions Core Tools
+    ```powershell
+    winget install Microsoft.Azure.FunctionsCoreTools
+    ```
+---
+
+## 🔌 Extensiones de VS Code
+
+Instalar las siguientes extensiones:
+
+- Azure Functions
+- C# Dev Kit
+
+---
 
 ## 🚀 Recomendación
 Seguir cada clase en orden y realizar los laboratorios.
