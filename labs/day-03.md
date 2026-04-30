@@ -1,12 +1,13 @@
-# 🧪 Día 03 - Azure Storage (Parte 1 - Blob Storage)
+# 🧪 Día 03 - Azure Storage
 
 ## 🎯 Objetivos
 
-- Entender qué es Azure Storage
-- Conocer los tipos de almacenamiento disponibles
-- Crear una Storage Account
+- Entender qué es una Storage Account
+- Conocer los tipos de almacenamiento en Azure
+- Comprender los tiers de almacenamiento
 - Trabajar con Blob Storage
-- Subir y acceder a archivos
+- Entender seguridad en Azure Storage
+- Introducir ciclo de vida de datos
 
 ---
 
@@ -14,112 +15,151 @@
 
 - Storage Account
 - Blob Storage
-- Containers
-- Blobs
-- Acceso público vs privado
+- File Storage
+- Queue Storage
+- Table Storage
+- Access tiers (Hot, Cool, Archive)
+- Seguridad (keys, SAS, RBAC)
 
 ---
 
 ## 🧩 Introducción
 
-Azure Storage es un servicio altamente escalable que permite almacenar distintos tipos de datos.
+Azure Storage es un servicio escalable que permite almacenar distintos tipos de datos en la nube.
 
-Tipos principales:
+Una Storage Account puede contener:
 
 - Blob Storage → archivos (imágenes, videos, documentos)
-- Queue Storage → mensajes
-- Table Storage → datos NoSQL
-- File Storage → sistema de archivos
+- File Storage → sistema de archivos compartido
+- Queue Storage → mensajería simple
+- Table Storage → almacenamiento NoSQL
 
-👉 En esta clase nos enfocamos en **Blob Storage**
+---
+
+## 🏗️ Tipos de almacenamiento
+
+### 🔹 Blob Storage
+- Almacenamiento de objetos
+- Ideal para archivos
+
+### 🔹 File Storage
+- Compartición de archivos tipo SMB
+
+### 🔹 Queue Storage
+- Mensajes entre aplicaciones
+
+### 🔹 Table Storage
+- Datos NoSQL estructurados
+
+---
+
+## ⚙️ Tiers de Storage
+
+### 🔹 Standard
+- Más económico
+- Basado en HDD
+- Uso general
+
+### 🔹 Premium
+- Mayor rendimiento
+- Basado en SSD
+- Baja latencia
+
+👉 No todos los servicios están disponibles en todos los tiers
+
+---
+
+## 📦 Tipos de Blob Storage
+
+- Block blobs → archivos comunes (imágenes, videos)
+- Append blobs → logs
+- Page blobs → discos (VMs)
+
+---
+
+## 🔥 Niveles de acceso (Access Tiers)
+
+Aplican a Block Blobs:
+
+- Hot → acceso frecuente
+- Cool → acceso ocasional
+- Archive → acceso muy poco frecuente
+
+👉 Diferencias:
+- costo de almacenamiento
+- costo de acceso
+- tiempo de recuperación (Archive)
+
+---
+
+## 🔐 Seguridad en Azure Storage
+
+### 🔹 Access Keys
+- Acceso completo a la cuenta
+
+### 🔹 SAS (Shared Access Signature)
+- Acceso limitado y temporal
+
+### 🔹 RBAC (Azure AD)
+- Control basado en roles
+
+👉 Recomendación:
+Usar SAS o RBAC en lugar de keys
+
+---
+
+## 🔄 Ciclo de vida de datos
+
+Azure permite definir reglas automáticas:
+
+- mover blobs de Hot → Cool → Archive
+- eliminar datos antiguos
+
+👉 Esto optimiza costos automáticamente
 
 ---
 
 ## 🖥️ Demo (Portal)
 
-Vamos a crear:
-
-- Storage Account
-- Container
-- Subir un archivo (blob)
-
-👉 Objetivo: entender cómo se almacenan y acceden los archivos en Azure
+- Crear Storage Account
+- Crear container
+- Subir archivo
+- Configurar acceso público
+- Ver URL del blob
 
 ---
 
 ## 🧪 Laboratorio
 
-Laboratorio:  
+Xtremelabs --> [AZ-204T00-A-AZH-CEP-M08] Create an Azure Function with Visual Studio Code
+
+Laboratorios:  
 https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-storage/01-blob-storage-resources-dotnet.html
+
+👉 Seleccionar laboratorio de Blob Storage
 
 ---
 
 ## 🧭 Enfoque de la clase
 
-- Crear una Storage Account
-- Crear un container
-- Subir archivos
-- Acceder a los blobs mediante URL
+- Entender la estructura de Storage
+- Trabajar con blobs
+- Comprender niveles de acceso
+- Introducir seguridad básica
 
 ---
 
 ## ⚠️ Notas importantes
 
 - El nombre de la Storage Account debe ser único globalmente
-- Usar la misma región que otros recursos
-- Tener en cuenta el nivel de acceso del container (public/private)
-
----
-
-## 🔥 Conceptos importantes
-
-### 🔹 Storage Account
-
-Es el recurso principal que contiene todos los datos.
-
-👉 Es como el “contenedor general” de almacenamiento
-
----
-
-### 🔹 Container
-
-Es una agrupación de blobs.
-
-👉 Similar a una carpeta
-
----
-
-### 🔹 Blob
-
-Es el archivo en sí.
-
-👉 Ejemplo:
-- imagen
-- PDF
-- video
-
----
-
-### 🔹 Acceso
-
-- Private → solo acceso autenticado
-- Public → accesible vía URL
-
-👉 IMPORTANTE: esto tiene impacto en seguridad
-
----
-
-## 🚀 Demo opcional
-
-Acceder a un archivo público vía navegador usando su URL
-
-👉 Esto ayuda a entender cómo funciona el acceso directo
+- El acceso público debe configurarse con cuidado
+- Archive tiene tiempo de recuperación (no es inmediato)
 
 ---
 
 ## 🚀 Comandos útiles (opcional)
 
-Listar cuentas de storage:
+Listar storage accounts:
 
 ```bash
 az storage account list --output table

@@ -29,26 +29,14 @@ Este curso está orientado a desarrolladores que quieren aprender a construir so
 
 ## 🗂 Estructura del repositorio
 
-- `/presentations` → Material de clase
-- `/labs` → Laboratorios prácticos
-- `/demos` → Ejemplos en vivo
-- `/resources` → Links útiles
-- `/setup` → Configuración inicial
+- `/labs` → Guía teórica + instrucciones
+- `/demos` → Código real que vemos en clase
 
 ## ⚙️ Requisitos
 - Cuenta de Azure --> Xtreme Labs
 # ⚙️ Requisitos de entorno
 
 Antes de comenzar con los laboratorios, es necesario contar con el siguiente entorno configurado:
-
----
-
-## ☁️ Azure
-
-- Una suscripción activa de Azure  
-👉 Si no tienes una, puedes crear una desde el portal de Azure
-
----
 
 ## 💻 Herramientas de desarrollo
 
@@ -68,6 +56,12 @@ Antes de comenzar con los laboratorios, es necesario contar con el siguiente ent
     ```powershell
     winget install Microsoft.Azure.FunctionsCoreTools
     ```
+
+- ⚡ Azure CLI
+    ```powershell
+    winget install --exact --id Microsoft.AzureCLI
+    ```
+    
 ---
 
 ## 🔌 Extensiones de VS Code
@@ -83,5 +77,3 @@ Instalar las siguientes extensiones:
 Seguir cada clase en orden y realizar los laboratorios.
 
 ---
-
-Cualquier duda pueden consultarme durante las clases 😄

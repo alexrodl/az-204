@@ -12,7 +12,7 @@
 
 ## 🧠 Conceptos clave
 
-- Serverless
+- Serverless 
 - Event-driven architecture
 - Function App
 - Triggers (HTTP, Timer)
@@ -54,8 +54,12 @@ Vamos a crear:
 
 ## 🧪 Laboratorio
 
+Xtremelabs --> [AZ-204T00-A-AZH-CEP-M08] Create an Azure Function with Visual Studio Code
+
 Laboratorio:  
 https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-functions/01-functions-create-vscode-http.html
+
+Xtreme Labs: [AZ-204T00-A-AZH-CEP-M08] Create an Azure Function with Visual Studio Code
 
 ---
 
