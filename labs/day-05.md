@@ -124,6 +124,7 @@ Push a GitHub → Build automática → Imagen en ACR
 ---
 
 # 🧪 Laboratorio 1
+
 [AZ-204T00-A-AZH-CEP-M05A] Build and run a container image with Azure Container Registry Tasks
 
 https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-container-services/01-container-image-acr-tasks.html
@@ -236,7 +237,7 @@ https://microsoftlearning.github.io/mslearn-azure-developer/instructions/azure-c
 
 👉 Objetivo:
 - desplegar aplicaciones modernas basadas en containers
-- trabajar con escalado serverless
+- trabajar con escalado serverless  
 
 ---
 
