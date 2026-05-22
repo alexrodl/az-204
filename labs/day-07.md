@@ -106,6 +106,58 @@ Certificados digitales.
 
 ---
 
+# 🔒 Soft-delete y Purge Protection en Azure Key Vault
+
+## 🧠 Soft-delete
+
+Soft-delete permite recuperar un Key Vault o secretos eliminados accidentalmente.
+
+👉 Cuando un recurso se elimina:
+- no desaparece inmediatamente
+- queda retenido durante un período configurable
+
+---
+
+## 📅 Days to retain deleted vaults
+
+Define la cantidad de días que el Key Vault permanecerá recuperable después de ser eliminado.
+
+👉 Ejemplo:
+- 7 días
+- 30 días
+- 90 días
+
+Durante ese período:
+- el recurso puede restaurarse
+- el nombre del vault sigue reservado
+
+---
+
+## 🛡️ Purge Protection
+
+Purge Protection evita la eliminación permanente inmediata de un Key Vault o sus secretos.
+
+👉 Incluso usuarios administradores no pueden purgar el recurso hasta finalizar el período de retención.
+
+---
+
+# ⚠️ ¿Por qué es importante?
+
+Ayuda a proteger contra:
+- eliminaciones accidentales
+- errores administrativos
+- ataques maliciosos
+
+---
+
+# 📌 Resumen
+
+| Funcionalidad | Objetivo |
+|---------------|----------|
+| Soft-delete | Recuperar recursos eliminados |
+| Retention Days | Tiempo de recuperación disponible |
+| Purge Protection | Evitar eliminación permanente inmediata |
+
 # 🖥️ Demo (Portal)
 
 Crear:
@@ -204,12 +256,79 @@ Permiten activar o desactivar funcionalidades dinámicamente.
 
 ---
 
-## 💡 Ejemplo
+# Tipos de Feature Flags en Azure App Configuration
 
-```text
-Nueva funcionalidad:
-→ habilitada solo para testing
+## Switch
+
+Feature flag básico tipo ON/OFF.
+
+### Uso
+- Habilitar o deshabilitar funcionalidades
+- Kill switch
+- Features beta
+
+### Ejemplo
+```txt
+EnableNewDashboard = true
 ```
+
+### Cuándo usarlo
+- Aplicaciones pequeñas
+- MVPs
+- Features simples
+- Demos
+
+---
+
+## Rollout
+
+Permite habilitar funcionalidades gradualmente.
+
+### Uso
+- Canary deployments
+- Releases progresivos
+- Reducir riesgo en producción
+
+### Ejemplo
+- 10% de usuarios
+- 25% de usuarios
+- 100% de usuarios
+
+### Cuándo usarlo
+- Producción
+- Aplicaciones enterprise
+- Nuevas funcionalidades críticas
+
+---
+
+## Experiment
+
+Pensado para A/B Testing y experimentación.
+
+### Uso
+- Comparar versiones
+- Medir comportamiento usuarios
+- Analytics y optimización
+
+### Ejemplo
+- Botón azul vs verde
+- Dos versiones de UI
+
+### Cuándo usarlo
+- Productos grandes
+- Equipos de producto
+- Aplicaciones orientadas a métricas
+
+---
+
+# Resumen
+
+| Tipo | Objetivo |
+|---|---|
+| Switch | Encender o apagar features |
+| Rollout | Liberar features gradualmente |
+| Experiment | Probar y medir resultados |
+
 
 ---
 

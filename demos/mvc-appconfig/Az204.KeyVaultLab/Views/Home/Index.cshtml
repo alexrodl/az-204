@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Azure Lab";
+}
+
+<div class="text-center">
+
+    <h1>@ViewBag.WebTitle</h1>
+
+    <h3>@ViewBag.Message</h3>
+
+    <hr />
+
+    <h4>Application Configuration</h4>
+
+    <p>
+        <strong>Theme:</strong>
+        @ViewBag.Theme
+    </p>
+
+    <hr />
+
+    <h4>Secrets from Key Vault</h4>
+
+    <p>
+        <strong>ApiKey:</strong>
+        @ViewBag.ApiKey
+    </p>
+
+    <p>
+        <strong>SqlPassword:</strong>
+        @ViewBag.SqlPassword
+    </p>
+
+    <p>
+        <strong>StorageConnection:</strong>
+        @ViewBag.StorageConnection
+    </p>
+
+    <hr />
+
+    @if (ViewBag.BetaEnabled)
+    {
+        <div class="alert alert-success">
+            Beta Feature Enabled!
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            Beta Feature Disabled
+        </div>
+    }
+
+</div>

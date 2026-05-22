@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "azure-sql", "azure-sql.csproj", "{24C19438-A69A-C74E-3662-221F35049BCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24C19438-A69A-C74E-3662-221F35049BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C19438-A69A-C74E-3662-221F35049BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C19438-A69A-C74E-3662-221F35049BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C19438-A69A-C74E-3662-221F35049BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99360852-5A0D-4642-B38A-C79EA436B670}
+	EndGlobalSection
+EndGlobal

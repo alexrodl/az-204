@@ -165,6 +165,21 @@ az appconfig kv set `
   --name $appconfigName `
   --key "App:WelcomeMessage" `
   --value "Welcome to Azure AZ-204 Lab"
+
+az appconfig kv set-keyvault `
+  --name $appConfigName `
+  --key "ApiKey" `
+  --secret-identifier "https://$keyVaultName.vault.azure.net/secrets/ApiKey"
+
+az appconfig kv set-keyvault `
+  --name $appConfigName `
+  --key "SqlPassword" `
+  --secret-identifier "https://$keyVaultName.vault.azure.net/secrets/SqlPassword"
+
+az appconfig kv set-keyvault `
+  --name $appConfigName `
+  --key "StorageConnection" `
+  --secret-identifier "https://$keyVaultName.vault.azure.net/secrets/StorageConnection"
 ```
 
 ---
@@ -244,12 +259,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddAzureAppConfiguration(options =>
 {
     options.Connect(
-        new Uri("https://az204-appconfig-demo.azconfig.io"),
+        new Uri("https://ac-204-81327.azconfig.io"),
         new DefaultAzureCredential())
     .ConfigureKeyVault(kv =>
     {
         kv.SetCredential(new DefaultAzureCredential());
     })
+    .ConfigureRefresh(refresh =>
+    {
+        refresh.Register("App:Sentinel", refreshAll: true)
+               .SetRefreshInterval(TimeSpan.FromSeconds(30));
+    })
+    .Select("App:*", "Development")
     .UseFeatureFlags();
 });
 
@@ -325,7 +346,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        ViewBag.Title = _configuration["App:Title"];
+        ViewBag.WebTitle = _configuration["App:WebTitle"];
 
         ViewBag.Theme = _configuration["App:Theme"];
 
@@ -335,15 +356,14 @@ public class HomeController : Controller
 
         ViewBag.SqlPassword = _configuration["SqlPassword"];
 
-        ViewBag.StorageConnection =
-            _configuration["StorageConnection"];
+        ViewBag.StorageConnection = _configuration["StorageConnection"];
 
-        ViewBag.BetaEnabled =
-            await _featureManager.IsEnabledAsync("BetaPage");
+        ViewBag.BetaEnabled = await _featureManager.IsEnabledAsync("BetaPage");
 
         return View();
     }
 }
+
 ```
 
 ---
@@ -365,7 +385,7 @@ Views/Home/Index.cshtml
 
 <div class="text-center">
 
-    <h1>@ViewBag.Title</h1>
+    <h1>@ViewBag.WebTitle</h1>
 
     <h3>@ViewBag.Message</h3>
 
