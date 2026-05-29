@@ -1,4 +1,4 @@
-# 🧪 Día 09 - Arquitectura Event-Driven con Event Grid y Event Hub
+# 🧪 Día 09 - Arquitectura Event-Driven con Event Grid y Event Hub y Azure Service Bus
 
 ## 🎯 Objetivos
 
@@ -883,3 +883,95 @@ Consumers
 
 > “Si querés reaccionar a eventos → Event Grid.  
 Si querés procesar millones de eventos → Event Hub.”
+
+# Services Bus
+
+## 🎯 Objetivos
+
+- Entender mensajería en Azure
+- Comprender diferencias entre:
+  - Queue Storage
+  - Service Bus
+  - Event-driven architecture
+- Entender conceptos:
+  - queues
+  - topics
+  - subscriptions
+  - producers
+  - consumers
+- Aprender cuándo usar cada servicio
+- Comprender arquitecturas desacopladas
+
+---
+
+# 🧠 Introducción
+
+En sistemas modernos muchas veces NO queremos comunicación directa entre aplicaciones.
+
+👉 En lugar de:
+
+```text
+App A → App B
+```
+
+usamos mensajería:
+
+```text
+App A → Queue → App B
+```
+
+---
+
+# 🎯 Beneficios
+
+- desacoplamiento
+- resiliencia
+- procesamiento asíncrono
+- escalabilidad
+
+---
+
+# ⚠️ Importante
+
+Mensajería NO es exactamente lo mismo que event-driven architecture.
+
+👉 Aunque están relacionados.
+
+---
+
+# 🔥 Diferencia conceptual importante
+
+| Concepto | Objetivo |
+|----------|-----------|
+| Event-driven | reaccionar a eventos |
+| Messaging | intercambiar mensajes confiables |
+
+---
+
+# 💡 Ejemplo Event-Driven
+
+```text
+Archivo subido
+    ↓
+Evento
+    ↓
+Múltiples sistemas reaccionan
+```
+
+👉 Event Grid.
+
+---
+
+# 💡 Ejemplo Messaging
+
+```text
+Pedido creado
+    ↓
+Mensaje en queue
+    ↓
+Sistema procesa pedido
+```
+
+👉 Queue / Service Bus.
+
+---

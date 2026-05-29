@@ -1,94 +1,4 @@
-# 🧪 Día 10 - Azure Service Bus y Azure Queue Storage
-
-## 🎯 Objetivos
-
-- Entender mensajería en Azure
-- Comprender diferencias entre:
-  - Queue Storage
-  - Service Bus
-  - Event-driven architecture
-- Entender conceptos:
-  - queues
-  - topics
-  - subscriptions
-  - producers
-  - consumers
-- Aprender cuándo usar cada servicio
-- Comprender arquitecturas desacopladas
-
----
-
-# 🧠 Introducción
-
-En sistemas modernos muchas veces NO queremos comunicación directa entre aplicaciones.
-
-👉 En lugar de:
-
-```text
-App A → App B
-```
-
-usamos mensajería:
-
-```text
-App A → Queue → App B
-```
-
----
-
-# 🎯 Beneficios
-
-- desacoplamiento
-- resiliencia
-- procesamiento asíncrono
-- escalabilidad
-
----
-
-# ⚠️ Importante
-
-Mensajería NO es exactamente lo mismo que event-driven architecture.
-
-👉 Aunque están relacionados.
-
----
-
-# 🔥 Diferencia conceptual importante
-
-| Concepto | Objetivo |
-|----------|-----------|
-| Event-driven | reaccionar a eventos |
-| Messaging | intercambiar mensajes confiables |
-
----
-
-# 💡 Ejemplo Event-Driven
-
-```text
-Archivo subido
-    ↓
-Evento
-    ↓
-Múltiples sistemas reaccionan
-```
-
-👉 Event Grid.
-
----
-
-# 💡 Ejemplo Messaging
-
-```text
-Pedido creado
-    ↓
-Mensaje en queue
-    ↓
-Sistema procesa pedido
-```
-
-👉 Queue / Service Bus.
-
----
+# 🧪 Día 10 -  Azure Queue Storage, Durable Functions y AppInsights
 
 # 📦 Azure Queue Storage
 
@@ -513,9 +423,166 @@ Mensajes problemáticos o fallidos.
 
 ---
 
-# 🔥 Frase final importante
+# 📦 Ejemplos reales - Azure Queue Storage vs Service Bus
 
-> “Event Grid distribuye eventos.  
-Event Hub procesa streams.  
-Queue Storage guarda mensajes simples.  
-Service Bus maneja mensajería enterprise.”
+## 🟢 Azure Queue Storage
+
+### 💡 Ejemplo real: Procesamiento de imágenes
+
+Un usuario sube una imagen en una web.
+
+```text
+Web App
+   ↓
+Blob Storage
+   ↓
+Queue Storage
+   ↓
+Worker procesa thumbnail
+```
+
+---
+
+## 📨 Mensaje en la cola
+
+```json
+{
+  "blobName": "foto123.jpg"
+}
+```
+
+---
+
+## 🔍 ¿Por qué usar Queue Storage?
+
+Porque es un escenario:
+
+✅ simple  
+✅ económico  
+✅ asíncrono  
+✅ tolera reintentos o duplicados
+
+---
+
+## 🎯 Ideal para
+
+- thumbnails
+- enviar emails simples
+- exportar archivos
+- tareas en background
+
+---
+
+## ⚠️ Importante
+
+Si se procesa dos veces normalmente no pasa nada.
+
+Ejemplo:
+
+```text
+Generar thumbnail nuevamente
+```
+
+👉 aceptable.
+
+---
+
+# 🔵 Azure Service Bus
+
+### 💡 Ejemplo real: E-commerce al crear un pedido
+
+Un cliente realiza una compra.
+
+```text
+Order API
+    ↓
+Service Bus Topic
+    ↓
+Billing
+Shipping
+Analytics
+Email Notifications
+```
+
+---
+
+## 📨 Mensaje
+
+```json
+{
+  "orderId": 845,
+  "customerId": 1001,
+  "total": 150
+}
+```
+
+---
+
+## 🔍 ¿Por qué usar Service Bus?
+
+Porque necesitás:
+
+✅ alta confiabilidad  
+✅ varios consumidores  
+✅ retries automáticos  
+✅ dead-letter queue  
+✅ evitar duplicados
+
+---
+
+## 🎯 Ideal para
+
+- pedidos
+- pagos
+- facturación
+- integración enterprise
+
+---
+
+## ⚠️ Importante
+
+En este caso duplicar el mensaje puede ser grave.
+
+Ejemplo:
+
+```text
+Cobrar dos veces
+```
+
+❌ no aceptable
+
+---
+
+# 📊 Comparación rápida
+
+| Escenario | Queue Storage | Service Bus |
+|---|---:|---:|
+| Thumbnail imágenes | ✅ | |
+| Tareas simples | ✅ | |
+| Bajo costo | ✅ | |
+| Pedidos e-commerce | | ✅ |
+| Varios sistemas | | ✅ |
+| Retry avanzado | | ✅ |
+| Dead-letter queue | | ✅ |
+
+---
+
+# 📌 Resumen
+
+## Queue Storage
+
+👉 tareas simples y económicas.
+
+---
+
+## Service Bus
+
+👉 mensajería crítica y enterprise.
+
+---
+
+# 🔥 Frase final
+
+> Queue Storage = “guardá esta tarea para después.”
+
+> Service Bus = “asegurate que este mensaje importante llegue correctamente.”
